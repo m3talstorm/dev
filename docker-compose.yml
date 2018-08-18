@@ -1,0 +1,41 @@
+
+version: '2.4'
+
+services:
+
+    # Management
+    # ---------------------------------------------------------
+
+    # https://github.com/m3talstorm/devpi
+    devpi:
+        container_name: devpi
+        image: m3talstorm/devpi
+        restart: always
+        ports:
+            - 3141:3141
+        volumes:
+            - devpi_data:/root/.devpi/server/:rw
+
+    portainer:
+        container_name: portainer
+        image: portainer/portainer
+        restart: always
+        ports:
+            - 9000:9000
+        command: -H unix:///var/run/docker.sock
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - portainer_data:/data
+
+
+
+
+# Volumes
+# ---------------------------------------------------------
+
+volumes:
+    # Let Docker create volumes on the host to be mapped into the container
+
+    portainer_data:
+
+    devpi_data:
