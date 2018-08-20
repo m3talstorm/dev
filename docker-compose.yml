@@ -9,7 +9,7 @@ services:
     # https://github.com/m3talstorm/devpi
     devpi:
         container_name: devpi
-        image: m3talstorm/devpi
+        image: metalstorm/devpi:latest
         restart: always
         ports:
             - 3141:3141
@@ -18,7 +18,7 @@ services:
 
     portainer:
         container_name: portainer
-        image: portainer/portainer
+        image: portainer/portainer:latest
         restart: always
         ports:
             - 9000:9000
